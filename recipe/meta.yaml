@@ -10,8 +10,9 @@ source:
   sha256: 2158fde6872d57c342b384ca1d0eadd562dc466a8a36f1160919e8189864b1b1
 
 build:
-  number: 2
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  # No libpostal for win
   skip: true  # [win]
 
 requirements:
@@ -20,6 +21,8 @@ requirements:
   host:
     - python
     - pip
+    - wheel
+    - setuptools
     - nose
     - six
     - libpostal
@@ -33,6 +36,10 @@ test:
     - postal.expand
     - postal.parser
     - postal.near_dupe
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/openvenues/pypostal
@@ -45,7 +52,10 @@ about:
     a fast statistical parser/normalizer for street
     addresses anywhere in the world.
   dev_url: https://github.com/openvenues/pypostal
+  doc_url: https://github.com/openvenues/pypostal
 
 extra:
   recipe-maintainers:
     - MichaelMarien
+  skip-lints:
+    - host_section_needs_exact_pinnings
