@@ -31,6 +31,8 @@ requirements:
     - libpostal
     - six
 test:
+  source_files:
+    - postal/tests
   imports:
     - postal
     - postal.expand
@@ -38,8 +40,10 @@ test:
     - postal.near_dupe
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - pytest -v postal/tests
 
 about:
   home: https://github.com/openvenues/pypostal
