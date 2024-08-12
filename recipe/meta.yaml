@@ -23,13 +23,13 @@ requirements:
     - pip
     - wheel
     - setuptools
-    - nose
-    - six
+    - nose >=1.0
     - libpostal
   run:
     - python
     - libpostal
     - six
+
 test:
   source_files:
     - postal/tests
