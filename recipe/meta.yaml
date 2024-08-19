@@ -12,8 +12,8 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  # No libpostal for win
-  skip: true  # [win]
+  # No libpostal for win or s390x
+  skip: true  # [win or s390x]
 
 requirements:
   build:
